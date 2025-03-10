@@ -10,6 +10,7 @@ import SwiftUI
 import SpriteKit
 import UIKit
 
+// This are for those fancy looking particle text on the start of the app
 class LetterScene: SKScene {
     private var particles: [SKShapeNode] = []
     private var targetPositions: [CGPoint] = []

@@ -10,12 +10,12 @@ import PhotosUI
 import UIKit
 import SpriteKit
 
+// this are the first view you saw when open the app (with those fancy text and animation)
 struct StartView: View {
     
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var image: Image? = nil
     @State private var uiImage: UIImage? = nil
-    @State private var temperatureAdjustment: Float = 0
     @State private var permissionGranted: Bool = false
     @State private var isImageSaved: Bool = false
     
@@ -41,7 +41,7 @@ struct StartView: View {
             PhotoEditingIconsView()
             
             VStack{
-                
+//                Show the particle text
                 SpriteView(scene: scene, options: [.allowsTransparency])
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.clear)
@@ -52,19 +52,16 @@ struct StartView: View {
                             }
                     )
                     .onAppear {
-                        // Start gradient animation
                         withAnimation(.linear(duration: 3).repeatForever(autoreverses: false)) {
                             gradientRotation = 360
                         }
                         
-                        // Wait for initial delay (2s) + assembly time (3s) before showing button
                         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                             withAnimation(.spring(duration: 0.6)) {
                                 buttonOffset = 0
                             }
                         }
                         
-                        // Add delay for second button appearance
                         DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
                             withAnimation(.spring(duration: 0.6)) {
                                 secondButtonOffset = 0
@@ -72,6 +69,7 @@ struct StartView: View {
                         }
                     }
                 
+//                To pick image from sheet
                 PhotosPicker(
                     selection: $selectedItem,
                     matching: .images,
@@ -135,6 +133,7 @@ struct StartView: View {
         }
     }
     
+//    for checking permission
     private func checkPhotoLibraryPermission() {
         let status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
         

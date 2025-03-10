@@ -8,6 +8,7 @@
 import UIKit
 import SwiftUI
 
+// This are for when you open gallery and press share, my app would be there and get the image
 class ShareViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -23,6 +24,7 @@ class ShareViewController: UIViewController {
     }
 }
 
+//This are the sheet after you press my app
 fileprivate struct ShareView: View {
     var itemProviders: [NSItemProvider]
     var extensionContext: NSExtensionContext?
@@ -131,7 +133,7 @@ fileprivate struct ShareView: View {
     
     private struct ImageItem: Identifiable {
         let id: UUID = .init()
-        var imageData: Data  // Store original image data
+        var imageData: Data  
         var previewImage: UIImage
     }
     

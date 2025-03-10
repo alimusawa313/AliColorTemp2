@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// This one for that exploding colorfull icon behind the particle text on start view
 struct PhotoEditingIconsView: View {
     let symbols = [
         "photo", "pencil", "wand.and.stars", "crop", "flip.horizontal",

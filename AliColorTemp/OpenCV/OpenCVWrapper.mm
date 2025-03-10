@@ -74,7 +74,7 @@ UIImage* MatToUIImage(const cv::Mat& mat) {
     return image;
 }
 
-// Grayscale conversion function
+// Function for Grayscale conversion
 + (UIImage *)grayscaleImg:(UIImage *)image {
     cv::Mat mat;
     [image convertToMat:&mat :false];
@@ -92,7 +92,7 @@ UIImage* MatToUIImage(const cv::Mat& mat) {
 }
 
 
-
+// Function to adjust temperature (Coldish Blue and Warm Orange)
 + (UIImage *)adjustImageTemperature:(UIImage *)image withAdjustment:(float)adjustment {
     cv::Mat mat;
     [image convertToMat: &mat :false];
@@ -126,14 +126,12 @@ UIImage* MatToUIImage(const cv::Mat& mat) {
     return resultImage;
 }
 
-
+// Function to adjust Brightness and contrast
 + (UIImage *)adjustBrightnessAndContrast:(UIImage *)image brightness:(float)brightness contrast:(float)contrast {
-    // Ensure the input image is not nil
     if (!image) {
         return nil;
     }
     
-    // Convert UIImage to cv::Mat
     cv::Mat mat;
     [image convertToMat:&mat :false];
     

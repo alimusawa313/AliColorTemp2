@@ -7,11 +7,13 @@
 
 import SwiftUI
 
+// This are for the custom button with slider (When user editing image)
 struct SliderComponent: View {
     var title: String
     var iconName: String
     @Binding var value: Float
     var id: Int
+//    This make sure only one expanded and the other colapsed
     @Binding var selectedSlider: Int?
     var minValue: Float
     var maxValue: Float
@@ -33,6 +35,7 @@ struct SliderComponent: View {
                 }
             }
             
+//            Show Slider only when on the current selected one
             if selectedSlider == id {
                 withAnimation(.bouncy) {
                     Slider(value: $value, in: minValue...maxValue, step: step)

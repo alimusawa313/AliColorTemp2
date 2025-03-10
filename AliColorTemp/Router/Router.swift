@@ -3,7 +3,7 @@
 import SwiftUI
 
 final class Router: ObservableObject {
-    
+//    This are for navigating using router
     public enum Destination: Hashable {
         case start
         case edit(image: UIImage)

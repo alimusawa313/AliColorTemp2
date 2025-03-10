@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// this are the view when you edit the image
 struct EditView: View {
     @EnvironmentObject var router: Router
     
@@ -19,6 +20,7 @@ struct EditView: View {
     
     @State private var selectedSlider: Int? = nil
     
+//    for fancy fliping animation
     @State var flip = false
     @State var flip2 = false
     
@@ -29,6 +31,7 @@ struct EditView: View {
     var body: some View {
         ZStack {
             
+//            Make the background match the image (Make it look like Apple Invites LOL)
             Image(uiImage: image!)
                 .resizable()
                 .ignoresSafeArea()
@@ -39,21 +42,23 @@ struct EditView: View {
                 VStack {
                     
                     ZStack {
+                        // Before Image
                         Image(uiImage: image!)
                             .resizable()
-                            .aspectRatio(contentMode: .fit) // Ensures the whole image is shown while maintaining aspect ratio
-                            .frame(width: 300, height: 400) // Max width of 300 and max height of 400
-                            .clipped() // Ensures the image is clipped if necessary
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 300, height: 400)
+                            .clipped()
                             .zIndex(flip2 ? 1 : 0)
                         
+                        // After Image
                         if let adjustedImage = adjustedImage {
                             Image(uiImage: adjustedImage)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .background(Color.white) // Ensures the whole image is shown while maintaining aspect ratio
-                                .frame(width: 300, height: 400) // Max width of 300 and max height of 400
-                                .clipped() // Ensures the image is clipped if necessary
-                                .animation(.easeInOut(duration: 0.2)) // Smooth transition for adjustments
+                                .background(Color.white)
+                                .frame(width: 300, height: 400)
+                                .clipped()
+                                .animation(.easeInOut(duration: 0.2))
                         }
                     }
                     .clipShape(.rect(cornerRadius: 24))
@@ -175,17 +180,17 @@ struct EditView: View {
         .navigationBarBackButtonHidden()
     }
     
-    // Update the adjusted image when any sliders change
+    // this to update the adjusted image when any sliders change
     private func updateAdjustedImage() {
         if let image = image {
             // Apply all transformations in sequence: Temperature -> Brightness & Contrast
             let tempImage = OpenCVWrapper.adjustImageTemperature(image, withAdjustment: temperatureAdjustment)
             let brightAndContrastImage = OpenCVWrapper.adjustBrightnessAndContrast(tempImage, brightness: brightnessAdjustment, contrast: contrastAdjustment)
-            adjustedImage = brightAndContrastImage // Ensure this is the final adjusted image
+            adjustedImage = brightAndContrastImage
         }
     }
     
-    // Save the adjusted image to the photo gallery
+    // Save the adjusted image to  gallery
     private func saveImageToGallery(image: UIImage) {
         // Ensure the image is properly converted to its final form before saving
         let finalImage = image
@@ -194,6 +199,7 @@ struct EditView: View {
         showSaveSuccessAlert()
     }
     
+    // show the success alert after saving
     private func showSaveSuccessAlert() {
         let alert = UIAlertController(title: "Success", message: "Image saved to gallery!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -204,6 +210,7 @@ struct EditView: View {
         }
     }
     
+    // show alert confirmation when back is pressed
     private func showBackConfirmation() {
             let alert = UIAlertController(title: "Are you sure?", message: "Any unsaved changes will be lost.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -218,6 +225,3 @@ struct EditView: View {
         }
 }
 
-#Preview {
-    EditView(image: UIImage(systemName: "star")!)
-}
