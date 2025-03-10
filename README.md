@@ -22,3 +22,6 @@
 Watch the demo video here:  
 [Demo Video](https://drive.google.com/file/d/14f1hHYG8I7tP-_k-LR9ppLJtjC3eKzPb/view?usp=sharing)
 
+You can also compare the edited image and original image by tapping them like this example below:
+[Demo Video](https://drive.google.com/file/d/1Ay0td0KTwqF8We223jmeeqNPc7y7orLp/view?usp=sharing)
+
