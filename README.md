@@ -1,6 +1,8 @@
 
 # Important!!
 
+Run the app on physical device and not emulator!
+
 ## To run the app
 
 ![OpenCV iOS Setup](https://drive.google.com/uc?id=1m3VnWoIyeSmB8-icHk3Oav7-rYrptRc7)
